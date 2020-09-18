@@ -1,6 +1,6 @@
 # Softtech BestCommerce Case
 
-![Java CI with Maven](https://github.com/ilhan-mstf/Softtech-BestCommerce-Case/workflows/Java%20CI%20with%20Maven/badge.svg)
+![Build and Tests](https://github.com/ilhan-mstf/Softtech-BestCommerce-Case/workflows/Build%20and%20Tests/badge.svg)
 
 ## Scope
 - Sign in
