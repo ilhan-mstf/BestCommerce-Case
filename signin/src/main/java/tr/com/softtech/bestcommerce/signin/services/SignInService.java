@@ -1,8 +1,9 @@
 package tr.com.softtech.bestcommerce.signin.services;
 
-import tr.com.softtech.bestcommerce.signin.models.SignInResponse;
+import tr.com.softtech.bestcommerce.signin.models.Credentials;
+import tr.com.softtech.bestcommerce.signin.dtos.UserDto;
 
 public interface SignInService {
 
-    SignInResponse signIn();
+    UserDto signIn(Credentials credentials);
 }

@@ -6,8 +6,12 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import tr.com.softtech.bestcommerce.signin.models.SignInResponse;
+import tr.com.softtech.bestcommerce.signin.dtos.UserDto;
+import tr.com.softtech.bestcommerce.signin.models.Credentials;
+import tr.com.softtech.bestcommerce.signin.security.JwtConstants;
 import tr.com.softtech.bestcommerce.signin.services.SignInService;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping(SignInController.ENDPOINT)
@@ -22,8 +26,23 @@ public class SignInController {
     @CrossOrigin
     @ApiOperation("Sign in user")
     @PostMapping()
-    public SignInResponse signIn() {
-        return signInService.signIn();
+    public UserDto signIn(
+            @RequestBody final Credentials credentials,
+            HttpServletResponse response
+    ) {
+        UserDto userDto = signInService.signIn(credentials);
+        addJwtHeaders(response, credentials);
+
+        return userDto;
+    }
+
+    private void addJwtHeaders(
+            HttpServletResponse response, Credentials credentials
+    ) {
+        response.setHeader(
+                JwtConstants.HEADER_JWT_SUBJECT, credentials.getEmail());
+        response.setHeader(
+                JwtConstants.HEADER_JWT_REMEMBER, credentials.getRemember());
     }
 
 }
