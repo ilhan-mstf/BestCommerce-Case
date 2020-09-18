@@ -1,0 +1,340 @@
+{
+	"info": {
+		"_postman_id": "594fd093-c38b-42b6-b64f-454a22292068",
+		"name": "Softtech-BestCommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SignIn",
+			"item": [
+				{
+					"name": "sign in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2918b8ad-cc5a-4714-8864-b4907597b780",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"X-JWT-Subject is present\", function () {",
+									"    pm.response.to.have.header(\"X-JWT-Subject\");",
+									"});",
+									"pm.test(\"X-JWT-Remember is present\", function () {",
+									"    pm.response.to.have.header(\"X-JWT-Remember\");",
+									"});",
+									"pm.test(\"X-JWT is present\", function () {",
+									"    pm.response.to.have.header(\"X-JWT\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mustafa@softtech.com.tr\",\n    \"password\": \"pass1234\",\n    \"remember\": \"true\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/signin",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign in - not exist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7edaa88c-e117-43d3-8f2c-33ebf47f879c",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"pm.test(\"X-JWT-Subject is present\", function () {",
+									"    pm.response.to.not.have.header(\"X-JWT-Subject\");",
+									"});",
+									"pm.test(\"X-JWT-Remember is present\", function () {",
+									"    pm.response.to.not.have.header(\"X-JWT-Remember\");",
+									"});",
+									"pm.test(\"X-JWT is present\", function () {",
+									"    pm.response.to.have.header(\"X-JWT\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"asdasdas\",\n    \"password\": \"pass1234\",\n    \"remember\": \"true\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/signin",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "List Products",
+			"item": [
+				{
+					"name": "list products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdXN0YWZhQHNvZnR0ZWNoLmNvbS50ciIsImlhdCI6MTYwMDQ1MTI4OSwiZXhwIjoxNjAwNDcyODg5fQ.TAqcDfu4Q6NSnin1m4yEu8npEKZqcYs3xs9L9sZOtYc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/products?userId=10001&size=10&page=0&sort=price,asc,inventory,desc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "10001"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "sort",
+									"value": "price,asc,inventory,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list products - bad request - no param",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdXN0YWZhQHNvZnR0ZWNoLmNvbS50ciIsImlhdCI6MTYwMDQ1MTI4OSwiZXhwIjoxNjAwNDcyODg5fQ.TAqcDfu4Q6NSnin1m4yEu8npEKZqcYs3xs9L9sZOtYc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/products?userId=10001&size=10&page=0&sort=price,asc,inventory,desc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "10001"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "sort",
+									"value": "price,asc,inventory,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list products - bad request - size is 0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4283685-8d95-4fe2-8097-371090e4cb39",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtdXN0YWZhQHNvZnR0ZWNoLmNvbS50ciIsImlhdCI6MTYwMDQ1MTI4OSwiZXhwIjoxNjAwNDcyODg5fQ.TAqcDfu4Q6NSnin1m4yEu8npEKZqcYs3xs9L9sZOtYc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/products?userId=10001&size=0&page=0&sort=price,asc,inventory,desc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "10001"
+								},
+								{
+									"key": "size",
+									"value": "0"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "sort",
+									"value": "price,asc,inventory,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list products - unauthorized",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b84b4860-b71c-457e-bf3f-cffa85f88d52",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnZWVldyIsImlhdCI6MTYwMDM2MDQ3MCwiZXhwIjoxNjAwMzgyMDcwfQ.kDlZ-tj6-URO8VVBLdstUwCxADHXKwo32Dbbj4pGdgA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/v1/products?userId=10001&size=10&page=0&sort=price,asc,inventory,desc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "10001"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "sort",
+									"value": "price,asc,inventory,desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"variable": [
+		{
+			"id": "5f106cf7-9767-449a-bdb6-7ad0b9313b8d",
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
