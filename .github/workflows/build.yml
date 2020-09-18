@@ -24,7 +24,7 @@ jobs:
       working-directory: ./signin
       run: mvn test
     - name: Run tests of list products service
-      working-directory: ./listpoducts
+      working-directory: ./listproducts
       run: mvn test
     - name: Run tests of api gateway
       working-directory: ./apigateway
