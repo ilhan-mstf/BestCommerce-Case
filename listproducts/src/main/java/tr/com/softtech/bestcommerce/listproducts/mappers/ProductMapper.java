@@ -8,6 +8,10 @@ import tr.com.softtech.bestcommerce.listproducts.entities.Product;
 public class ProductMapper {
 
     public ProductDto entityToDto(Product product) {
+        if (product == null) {
+            return null;
+        }
+
         ProductDto productDto = new ProductDto();
         productDto.setId(product.getId());
         productDto.setName(product.getName());

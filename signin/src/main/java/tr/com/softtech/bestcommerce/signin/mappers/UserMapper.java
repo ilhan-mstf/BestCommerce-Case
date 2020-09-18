@@ -8,6 +8,9 @@ import tr.com.softtech.bestcommerce.signin.entities.User;
 public class UserMapper {
 
     public UserDto entityToDto(User user) {
+        if (user == null) {
+            return null;
+        }
         UserDto userDto = new UserDto();
         userDto.setEmail(user.getEmail());
         userDto.setName(user.getName());
