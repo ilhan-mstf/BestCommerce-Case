@@ -33,4 +33,4 @@
 
 ## Points to further development
 - Service registery can be added. Each service should add itself to the service registery and then api gateway routes request according the list fetched from service registery.
-- Advanced authentication and auhorization service can be used (Keycloak).
+- Advanced authentication and authorization service can be used (Keycloak).
