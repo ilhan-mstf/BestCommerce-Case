@@ -23,6 +23,8 @@
 - User should sign in and read JWT from reponse header.
 - Then, user should add JWT to the header of the requests.
 
+![flow.png](flow.png)
+
 ## Notes
 - For this MVP there is no need to introduce Message Queues since current features don't require event driven architecture. It can be added later on if required.
 - Each service has its own db.
