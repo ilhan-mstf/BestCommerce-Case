@@ -1,10 +1,11 @@
 package tr.com.softtech.bestcommerce.listproducts.services;
 
-import tr.com.softtech.bestcommerce.listproducts.entities.Product;
+import tr.com.softtech.bestcommerce.listproducts.dtos.ProductDto;
+import tr.com.softtech.bestcommerce.listproducts.params.ListProductsParams;
 
 import java.util.List;
 
 public interface ListProductsService {
 
-    List<Product> listProducts();
+    List<ProductDto> listProducts(ListProductsParams params);
 }
