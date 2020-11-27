@@ -1,4 +1,4 @@
-# Softtech BestCommerce Case
+# BestCommerce Case
 
 ![Build and Tests](https://github.com/ilhan-mstf/Softtech-BestCommerce-Case/workflows/Build%20and%20Tests/badge.svg)
 
